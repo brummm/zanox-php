@@ -38,7 +38,7 @@ class Request extends HttpRequest implements RequestInterface{
      */
     private function getSignature( $timestamp, $nonce, $secret )
     {
-        $sign = $this->getMethod() .'/'.strtolower( $this->getUri() ).$timestamp.$nonce;
+        $sign = $this->getMethod() .'/'.strtolower( $this->getUri()->getPath() ).$timestamp.$nonce;
         return $this->hmac( $sign, $secret );
     }
 

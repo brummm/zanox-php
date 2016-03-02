@@ -4,14 +4,18 @@ namespace Zanox\Resources;
 
 use Zanox\Client;
 use Zanox\Request;
-use Zanox\Response;
 use Zanox\Contracts\ResourceInterface;
 
 abstract class AbstractResource implements ResourceInterface{
 
-    const ZNX_DATETIME = 'YYYY-mm-dd';
+    const ZNX_DATETIME = 'Y-m-d';
 
     protected $_client;
+
+    public function __construct( Client $client = null )
+    {
+        $this->_client = $client;
+    }
 
     public function setClient(Client $client)
     {
@@ -21,10 +25,26 @@ abstract class AbstractResource implements ResourceInterface{
 
     public function request($method, $uri, array $query = null)
     {
-        $request    = $this->makeHttpRequest($method, $this->applyQuery($uri, $query));
-        $response   = $this->_client->send($request);
+        if( $query )
+        {
+            $uri = $this->applyQuery($uri, $query);
+        }
 
-        return new Response( $response );
+        $request    = $this->makeHttpRequest($method, $uri);
+        
+        return $this->_client->send($request);
+    }
+
+    protected function applyQuery( $uri, array $parameters )
+    {
+        $query = http_build_query($parameters, '', '&');
+
+        if( strlen( $query ) > 0)
+        {
+            $uri .= '?' . $query;
+        }
+
+        return $uri;
     }
 
     protected function getFormattedDate( \DateTime $date )
