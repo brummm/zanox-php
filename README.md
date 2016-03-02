@@ -52,7 +52,7 @@ $reports->getLeadsById( $id, array $query = null )
 $reports->getSalesByDate( DateTime $date, array $query = null )
 $reports->getSalesById( $id, array $query = null )
 $reports->getBasic( DateTime $fromDate, DateTime $toDate, array $query = null)
-
+```
 
 ## Docs
 
