@@ -22,7 +22,6 @@
 		}
 	},
 	"autoload-dev": {
-		"files": ["tests/fixture/const.php"],
         "psr-4": {
             "Zanox\\Tests\\": "tests/"
         }

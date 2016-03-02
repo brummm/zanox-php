@@ -12,7 +12,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase{
         $this->assertInstanceOf('GuzzleHttp\ClientInterface', $client->getHttpClient());
     }
 
-    public function testItWillSignRequest()
+    public function testSend()
     {
         $auth = [
             'connectId' => getenv('ZNX_TEST_CONNECTID'),
@@ -26,6 +26,8 @@ class ClientTest extends \PHPUnit_Framework_TestCase{
 
         $request->expects($this->once())->method('sign')->will($this->returnSelf());;
 
-        (new Client($auth))->send($request);
+        $response = (new Client($auth))->send($request);
+
+        $this->assertInstanceOf( '\Zanox\Response', $response );
     }
 }

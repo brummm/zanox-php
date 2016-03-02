@@ -20,12 +20,8 @@
         </whitelist>
     </filter>
     <php>
-        <env name="ZNX_TEST_METHOD" value="GET"/>
-        <env name="ZNX_TEST_URI" value="reports/sales/date/2013-07-20"/>
-        <env name="ZNX_TEST_TIMESTAMP" value="Thu, 15 Aug 2013 15:56:07 GMT"/>
-        <env name="ZNX_TEST_NONCE" value="17811FEFBA7448CE848327F835729AA2"/>
         <env name="ZNX_TEST_RESOURCE" value="reports"/>
-        <env name="ZNX_TEST_CONNECTID" value="802B8BF4AE99EBE00F41"/>
-        <env name="ZNX_TEST_SECRETKEY" value="fa4c0c2020Aa4c+ab9Ea0ec8d39E06/df2c5aa44"/>
+        <env name="ZNX_TEST_CONNECTID" value="6F3FE334F40A6B6B0BEB"/>
+        <env name="ZNX_TEST_SECRETKEY" value="c72972f9eA7b4d+19855aC64cf5fB8/cb1c98e44"/>
     </php>
 </phpunit>

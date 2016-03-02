@@ -82,6 +82,8 @@ class Client
     public function send(RequestInterface $request)
     {
         $signedRequest = $request->sign($this->connectId, $this->secretKey);
-        return $this->getHttpClient()->send($signedRequest);
+        $httpResponse  = $this->getHttpClient()->send($signedRequest);
+
+        return new Response( $httpResponse );
     }
 }

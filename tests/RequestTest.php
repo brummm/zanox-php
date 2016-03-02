@@ -9,18 +9,18 @@ class RequestTest extends \PHPUnit_Framework_TestCase{
 
     public function testSign()
     {
-        $request = new Request( getenv('ZNX_TEST_METHOD'), getenv('ZNX_TEST_URI'));
-        $validSignature ='ZXWS '.getenv('ZNX_TEST_CONNECTID').':N4RPYDY1aUjciVm32pCJ82FVvuk=';
+        $connectId = '802B8BF4AE99EBE00F41';
+        $secretKey = 'fa4c0c2020Aa4c+ab9Ea0ec8d39E06/df2c5aa44';
+        $timestamp = 'Thu, 15 Aug 2013 15:56:07 GMT';
+        $nonce     = '17811FEFBA7448CE848327F835729AA2';
 
-        $signedRequest = $request->sign( 
-            getenv('ZNX_TEST_CONNECTID'), 
-            getenv('ZNX_TEST_SECRETKEY'), 
-            getenv('ZNX_TEST_TIMESTAMP'), 
-            getenv('ZNX_TEST_NONCE') 
-        );
+        $request = new Request( 'GET', 'reports/sales/date/2013-07-20');
+        $validSignature ='ZXWS '.$connectId.':N4RPYDY1aUjciVm32pCJ82FVvuk=';
 
-        $this->assertSame(getenv('ZNX_TEST_TIMESTAMP'), $signedRequest->getHeader('Date')[0]);
-        $this->assertSame(getenv('ZNX_TEST_NONCE'), $signedRequest->getHeader('nonce')[0]);
+        $signedRequest = $request->sign( $connectId, $secretKey, $timestamp, $nonce );
+
+        $this->assertSame($timestamp, $signedRequest->getHeader('Date')[0]);
+        $this->assertSame($nonce, $signedRequest->getHeader('nonce')[0]);
         $this->assertSame($validSignature, $signedRequest->getHeader('Authorization')[0]);
     }
 }
