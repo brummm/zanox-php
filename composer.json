@@ -1,0 +1,33 @@
+{
+	"name": "izziaraffaele/zanox-php",
+	"type": "library",
+	"description": "PHP client for Zanox API",
+	"keywords": ["zanox","zanox-php","client","guzzle"],
+	"homepage": "https://github.com/izziaraffaele/zanox-php",
+	"license": "MIT",
+	"authors": [
+		{
+			"name": "Raffaele Izzia",
+			"homepage": "http://www.izziaraffaele.com"
+		}
+	],
+	"require": {
+		"php": ">=5.5",
+		"guzzlehttp/guzzle": "^6.1.1"
+	},
+	"autoload": {
+		"files": ["src/functions.php"],
+		"psr-4": {
+			"Zanox\\": "src/"
+		}
+	},
+	"autoload-dev": {
+		"files": ["tests/fixture/const.php"],
+        "psr-4": {
+            "Zanox\\Tests\\": "tests/"
+        }
+    },
+	"require-dev": {
+		"phpunit/phpunit": "^5.2"
+	}
+}

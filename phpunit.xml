@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit backupGlobals="false"
+         backupStaticAttributes="false"
+         bootstrap="vendor/autoload.php"
+         colors="true"
+         convertErrorsToExceptions="true"
+         convertNoticesToExceptions="true"
+         convertWarningsToExceptions="true"
+         processIsolation="false"
+         stopOnFailure="false"
+         syntaxCheck="false">
+    <testsuites>
+        <testsuite name="Application Test Suite">
+            <directory>./tests/</directory>
+        </testsuite>
+    </testsuites>
+    <filter>
+        <whitelist>
+            <directory suffix=".php">src/</directory>
+        </whitelist>
+    </filter>
+    <php>
+        <env name="ZNX_TEST_METHOD" value="GET"/>
+        <env name="ZNX_TEST_URI" value="reports/sales/date/2013-07-20"/>
+        <env name="ZNX_TEST_TIMESTAMP" value="Thu, 15 Aug 2013 15:56:07 GMT"/>
+        <env name="ZNX_TEST_NONCE" value="17811FEFBA7448CE848327F835729AA2"/>
+        <env name="ZNX_TEST_RESOURCE" value="reports"/>
+        <env name="ZNX_TEST_CONNECTID" value="802B8BF4AE99EBE00F41"/>
+        <env name="ZNX_TEST_SECRETKEY" value="fa4c0c2020Aa4c+ab9Ea0ec8d39E06/df2c5aa44"/>
+    </php>
+</phpunit>
