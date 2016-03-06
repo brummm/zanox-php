@@ -24,7 +24,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase{
                         ->setMethods(['sign'])
                         ->getMock();
 
-        $request->expects($this->once())->method('sign')->will($this->returnSelf());;
+        $request->expects($this->once())->method('sign')->will($this->returnSelf());
 
         $response = (new Client($auth))->send($request);
 
